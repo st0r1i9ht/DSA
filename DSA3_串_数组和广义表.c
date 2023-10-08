@@ -36,7 +36,7 @@ int Index_BF(SString S, SString T)
 		}
 		else // 主串 子串指针回溯 重新开始下一次匹配
 		{
-			i = i - j + 2;
+			i = i - j + 2; // (i - j + 1)回到上一次匹配的第一个字符 + 1 从下一个字符开始匹配
 			j = 1;
 		}
 	}
@@ -78,7 +78,9 @@ int Index_posBF(SString S, SString T, int pos)
 
 // KMP算法
 // O(n+m)
-int next[MAXLEN];
+// i不再需要回溯 j使用next算法回溯 大幅提高效率
+// next数组的值只需要求一次
+int* next;// 模式串长度大小的next数组
 void get_next(SString T, int* next)
 {
 	int i = 1;
@@ -94,6 +96,28 @@ void get_next(SString T, int* next)
 		}
 		else
 			j = next[j];
+	}
+}
+
+// 通过next值求nextval 算法很难理解 理解原理和方法 用的时候会写就够了
+void get_nextval(SString T, int* nextval[])
+{
+	int i = 1;
+	nextval[1] = 0;
+	int j = 0;
+	while (i < T.length)
+	{
+		if (j == 0 || T.ch[i] == T.ch[j])
+		{
+			++i;
+			++j;
+			if (T.ch[i] != T.ch[j])
+				nextval[i] = j;
+			else
+				nextval[i] = nextval[j];
+		}
+		else
+			j = nextval[j];
 	}
 }
 
