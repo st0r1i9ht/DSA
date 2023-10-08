@@ -5,7 +5,7 @@
 #define MAXLEN 255
 typedef struct
 {
-	char ch[MAXLEN + 1]; // 存储串的一维数组
+	char ch[MAXLEN + 1]; // 存储串的一维数组 只能是char
 	int length; // 串的当前长度
 }SString;
 
@@ -139,3 +139,16 @@ int Index_KMP(SString S, SString T, int pos)
 	else
 		return 0; // 返回不匹配标志
 }
+
+// 一维数组元素位置
+// a 首地址
+// L 元素所占空间
+// LOC(i) = i * L + a
+
+// 二维数组元素位置
+// n 每行个数
+// LOC(i, j) = (i * n + j) * L + a
+
+// 本/页/行/列
+// a[m1][m2][m3] 各维元素个数的数量为m1, m2, m3
+// LOC(i1, i2, i3) = a + (i1 * m2 * m3)前i1页总元素个数 + (i2 * m3)第i1页的前i2行总元素个数 + i
