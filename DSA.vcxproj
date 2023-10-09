@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -130,6 +130,7 @@
     <ClCompile Include="DSA1_线性表.c" />
     <ClCompile Include="DSA2_栈和队列.c" />
     <ClCompile Include="DSA3_串_数组和广义表.c" />
+    <ClCompile Include="DSA4_树和二叉树的定义.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataStructure.h" />
