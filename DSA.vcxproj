@@ -130,7 +130,7 @@
     <ClCompile Include="DSA1_线性表.c" />
     <ClCompile Include="DSA2_栈和队列.c" />
     <ClCompile Include="DSA3_串_数组和广义表.c" />
-    <ClCompile Include="DSA4_树和二叉树的定义.c" />
+    <ClCompile Include="DSA4_二叉树.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataStructure.h" />

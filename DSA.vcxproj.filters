@@ -24,6 +24,9 @@
     <ClCompile Include="DSA3_串_数组和广义表.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="DSA4_二叉树.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataStructure.h">
