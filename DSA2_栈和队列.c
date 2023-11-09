@@ -1,7 +1,6 @@
 #include "DataStructure.h"
 #include <stdio.h>
 
-
 // 顺序栈表示
 #define MAXSIZE 100
 typedef struct
@@ -82,7 +81,7 @@ typedef struct StackNode
  //LinkStack S; 头指针
 
 // 链栈的初始化
-void InitStack(LinkStack* S)
+void InitStack_L(LinkStack S)
 {
 	// 构造一个空栈 栈顶指针置为空
 	S = NULL;
@@ -90,7 +89,7 @@ void InitStack(LinkStack* S)
 }
 
 // 判断链栈是否为空
-Status StackEmpty(LinkStack S)
+Status StackEmpty_L(LinkStack S)
 {
 	if (S == NULL)
 		return TRUE;
@@ -99,7 +98,7 @@ Status StackEmpty(LinkStack S)
 }
 
 // 链栈的入栈
-Status Push(LinkStack S, SElemType e)
+Status Push_L(LinkStack S, SElemType e)
 {
 	StackNode* p = (StackNode*)malloc(sizeof(StackNode));// 生成新节点p
 	p->data = e; // 将新节点数据域置为e
@@ -109,7 +108,7 @@ Status Push(LinkStack S, SElemType e)
 }
 
 // 链栈的出栈
-Status Pop(LinkStack S, SElemType* e)
+Status Pop_L(LinkStack S, SElemType* e)
 {
 	if (S == NULL)
 		return ERROR;
@@ -152,7 +151,17 @@ int QueueLength(SqQueue Q)
 	return (Q.rear - Q.front + MAXQSIZE) % MAXQSIZE;
 }
 
+// 判断队列是否为空
+Status QueueEmpty(SqQueue Q)
+{
+	if (Q.front == Q.rear)
+		TRUE;
+	else
+		FALSE;
+}
+
 // 循环队列的入队算法
+// 始终空一个位置 便于区分队满队空
 Status EnQueue(SqQueue* Q, QElemType e)
 {
 	if (Q->rear + 1 % MAXQSIZE == Q->front) // 队满
@@ -165,7 +174,7 @@ Status EnQueue(SqQueue* Q, QElemType e)
 // 出队
 Status DeQueue(SqQueue* Q, QElemType* e)
 {
-	if (Q->front == Q->rear) // 队空
+	if (QueueEmpty(*Q)) // 队空 Q.front == Q.rear
 		return ERROR;
 	*e = Q->base[Q->front]; // 保存队头元素
 	Q->front = (Q->front + 1) % MAXSIZE; // 队头指针 + 1

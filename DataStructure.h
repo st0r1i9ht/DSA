@@ -15,3 +15,23 @@ typedef char ElemType;
 typedef char SElemType;
 typedef char QElemType;
 typedef char TElemType;
+
+// 函数声明
+// 栈和队列
+Status InitStack(SqStack* S);
+Status StackEmpty(SqStack S);
+Status ClearStack(SqStack* S);
+Status DestroyStack(SqStack* S);
+Status Push(SqStack* S, SElemType e);
+Status Pop(SqStack* S, SElemType* e);
+void InitStack_L(LinkStack* S);
+Status StackEmpty_L(LinkStack S);
+Status Push_L(LinkStack S, SElemType e);
+Status Pop_L(LinkStack S, SElemType* e);
+SElemType GetTop(LinkStack S);
+Status InitQueue(SqQueue* Q);
+int QueueLength(SqQueue Q);
+Status EnQueue(SqQueue* Q, QElemType e);
+Status DeQueue(SqQueue* Q, QElemType* e);
+SElemType GetHead(SqQueue Q);
+Status QueueEmpty(SqQueue Q);
