@@ -128,9 +128,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DSA1_线性表.c" />
-    <ClCompile Include="DSA2_栈和队列.c" />
-    <ClCompile Include="DSA3_串_数组和广义表.c" />
+    <ClCompile Include="DSA2_栈_队列.c" />
+    <ClCompile Include="DSA3_串_数组_广义表.c" />
     <ClCompile Include="DSA4_二叉树.c" />
+    <ClCompile Include="DSA5_树_森林_哈夫曼树.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DataStructure.h" />

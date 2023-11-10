@@ -1,5 +1,8 @@
 #pragma once
 
+#include <stdio.h>
+#include <stdlib.h>
+
 // 操作算法中用到的预定义常量和类型
 #define TRUE 1
 #define FALSE 0

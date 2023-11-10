@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "DataStructure.h"
 
 //定义线性表

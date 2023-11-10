@@ -1,5 +1,4 @@
 #include "DataStructure.h"
-#include <stdio.h>
 
 // À≥–Ú’ª±Ì æ
 #define MAXSIZE 100

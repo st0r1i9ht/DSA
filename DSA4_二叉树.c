@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "DataStructure.h"
 
 // 二叉树的性质
@@ -145,3 +144,98 @@ void LevelOrder(BiNode* b)
 			EnQueue(qu, p->rchild);
 	}
 }
+
+// 建立二叉树 DLR
+Status CreateBiTree(BiTree T)
+{
+	char ch;
+	if ((ch = getchar()) == "#")
+		T = NULL;
+	else
+	{
+		if (!(T = (BiNode*)malloc(sizeof(BiNode))))
+			exit(OVERFLOW);
+		T->data = ch;
+		CreateBiTree(T->lchild); // 构造左子树
+		CreateBiTree(T->rchild); // 构造右子树
+	}
+	return OK;
+}
+
+// 复制二叉树
+// 如果是空树 递归结束
+// 否则申请新结点空间 复制根节点 递归复制左右子树
+int Copy(BiTree T, BiTree NewT)
+{
+	if (T == NULL) // 空树返回0
+	{
+		NewT = (BiTree)malloc(sizeof(BiNode));
+		return 0;
+	}
+	else
+	{
+		NewT = (BiTree)malloc(sizeof(BiNode));
+		NewT->data = T->data;
+		Copy(T->lchild, NewT->lchild);
+		Copy(T->rchild, NewT->rchild);
+	}
+}
+
+// 计算二叉树深度
+// 如果是空树 则深度为0
+// 否则 递归计算左子树的深度记为m, 递归计算右子树的深度记为n, 二叉树的深度则为m与n较大者+1
+int Depth(BiTree T)
+{
+	if (T == NULL)
+		return 0;
+	else
+	{
+		int m = Depth(T->lchild);
+		int n = Depth(T->rchild);
+		if (m > n)
+			return(m + 1);
+		else
+			return(n + 1);
+	}
+}
+
+// 计算二叉树结点总数
+// 如果是空树 则结点个数为0
+// 否则 结点个数为左子树的结点个数 + 右子树的结点个数 + 1 L+R+D
+int NodeCount(BiTree T)
+{
+	if (T == NULL)
+		return 0;
+	else
+		return NodeCount(T->lchild) + NodeCount(T->rchild) + 1;
+}
+
+// 计算二叉树的叶子总数
+// 如果是空树 则结点个数为0
+// 否则 结点个数为左子树结点个数 + 右子树的结点个数
+int LeafCount(BiTree T)
+{
+	if (T == NULL)
+		return 0; // 空树返回0
+	if (T->lchild == NULL && T->rchild == NULL)
+		return 1; // 叶子结点返回1
+	else return LeafCount(T->lchild) + LeafCount(T->rchild);
+}
+
+/* 线索二叉树
+ * 如果某结点的左孩子为空 将空的左孩子指针域改为指向其前驱
+ * 如果某结点的右孩子为空 将空的右孩子指针域改为指向其后继
+ * 改变指向的指针称为线索 加线索的二叉树称为线索二叉树Threaded Binary Tree 该过程称为线索化
+ * ltag/rtag = 0 lchild/rchild指向左/右孩子 tag=1指向前驱后继
+ * 增加了头结点的线索二叉树
+ * 线索二叉树还剩余首尾两个指针域悬空 增设一个头结点
+ * lt = 0 lc指向根结点 rt = 1 rc指向遍历序列中的最后一个结点
+ * 遍历序列中第一个结点的lc和最后一个结点的rc指向头结点
+ */
+// 线索二叉树存储结构
+typedef struct BiThrNode
+{
+	TElemType data;
+	int ltag, rtag;
+	struct BiThrNode* lchild, * rchild;
+}BiThrNode, * BiThrTree;

@@ -1,5 +1,4 @@
 #include "DataStructure.h"
-#include <stdio.h>
 
 // ´®µÄË³Ðò´æ´¢½á¹¹
 #define MAXLEN 255
